@@ -6,10 +6,20 @@
 Welcome to Example Fortran Project's documentation!
 ===================================================
 
+Contents:
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   UsingSphinxFortran
+
+API
+===
+.. toctree::
+  :maxdepth: 1
+  :caption: Contents:
+
+  md_gprof_all
 
 
 Indices and tables

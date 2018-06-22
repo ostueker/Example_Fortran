@@ -58,3 +58,41 @@ $ mv  md_gprof.f90  src/
 (sphinx_fortran) docs $ make html
 (sphinx_fortran) docs $ firefox _build/html/index.html
 ```
+
+## Activate Sphinx-Fortran in conf.py
+1. Un-comment the following lines under "Path Setup":
+```python
+import os
+import sys
+```
+
+2. Add `sphinxfortran.fortran_domain` and `sphinxfortran.fortran_autodoc`
+   to the extensions:
+```python
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.imgmath',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.intersphinx',
+    'sphinxfortran.fortran_domain',
+    'sphinxfortran.fortran_autodoc',
+]
+```
+3. Add the following configurations for sphinx-fortran e.g. to the end:
+```python
+## FORTRAN AUTODOC
+# List of possible extensions in the case of a directory listing
+fortran_ext = ['f90', 'F90', 'f95', 'F95']
+
+# This variable must be set with file pattern, like "*.f90", or a list of them. 
+# It is also possible to specify a directory name; in this case, all files than 
+# have an extension matching those define by the config variable `fortran_ext` 
+# are used.
+fortran_src = os.path.abspath('../src/')
+
+# Indentation string or length (default 4). If it is an integer, 
+# indicates the number of spaces.
+fortran_indent = 4
+```
