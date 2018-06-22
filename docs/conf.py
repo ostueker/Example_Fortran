@@ -12,8 +12,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
+import shlex
+
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -39,6 +41,14 @@ release = u''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.imgmath',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.intersphinx',
+    'sphinxfortran.fortran_domain',
+    'sphinxfortran.fortran_autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -153,3 +163,18 @@ texinfo_documents = [
      author, 'ExampleFortranProject', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
+## FORTRAN AUTODOC
+# List of possible extensions in the case of a directory listing
+fortran_ext = ['f90', 'F90', 'f95', 'F95']
+
+# This variable must be set with file pattern, like "*.f90", or a list of them. 
+# It is also possible to specify a directory name; in this case, all files than 
+# have an extension matching those define by the config variable `fortran_ext` 
+# are used.
+fortran_src = os.path.abspath('../src/')
+
+# Indentation string or length (default 4). If it is an integer, 
+# indicates the number of spaces.
+fortran_indent = 4

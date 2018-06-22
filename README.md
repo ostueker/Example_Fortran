@@ -26,7 +26,14 @@ Fetching package metadata ...........
 
 $ source activate sphinx_fortran
 (sphinx_fortran)$ conda install sphinx sphinx_rtd_theme
-(sphinx_fortran)$ pip install sphinx-fortran
+
+# The latest release of sphinx-fortran on PyPi does not work with 
+# Sphinx 1.6b1 or newer.
+# (sphinx_fortran)$ pip install sphinx-fortran
+# Install master from GitHub instead:
+(sphinx_fortran)$ git clone https://github.com/VACUMM/sphinx-fortran.git
+(sphinx_fortran)$ cd sphinx-fortran
+(sphinx_fortran)$ python setup.py install
 ```
 
 ## Generating the initial Project
