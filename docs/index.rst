@@ -9,8 +9,9 @@ Welcome to Example Fortran Project's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   Setup
    UsingSphinxFortran
 
 API
