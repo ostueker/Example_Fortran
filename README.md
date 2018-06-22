@@ -5,8 +5,8 @@ This project is an example for:
 * Using Sphinx to document the code
 * writing Unit-tests
 * Running CI with GitLab
+* Using CMake
 * ...
-
 
 
 ## Preparing a Python environment
