@@ -171,8 +171,14 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+## -- Options for Inter-Sphinx---- -------------------------------------------
+intersphinx_mapping = {
+    'sphinx':         ('http://www.sphinx-doc.org/en/stable', None),
+    'sphinxfortran':  ('http://sphinx-fortran.readthedocs.io/en/latest/', None),
+    'python':         ('https://docs.python.org/3', None)
+}
 
-## FORTRAN AUTODOC
+## -- Options for Sphinx-Fortran ---------------------------------------------
 # List of possible extensions in the case of a directory listing
 fortran_ext = ['f90', 'F90', 'f95', 'F95']
 

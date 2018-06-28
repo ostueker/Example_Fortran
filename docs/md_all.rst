@@ -5,4 +5,4 @@ MD Program
 
 This is a simple Molecular Dynamics program.
 
-.. f:autosrcfile:: md_gprof.f90
+.. f:autosrcfile:: md.f90

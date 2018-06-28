@@ -11,8 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 1
 
-   Setup
    UsingSphinxFortran
+   xref_examples
 
 API
 ===
@@ -20,7 +20,7 @@ API
   :maxdepth: 1
   :caption: Contents:
 
-  md_gprof_all
+  md_all
 
 
 Indices and tables
