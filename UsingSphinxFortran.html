@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Sphinx Fortran &mdash; Example Fortran Project  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cross-Referencing Examples" href="xref_examples.html" />
+    <link rel="prev" title="Welcome to Example Fortran Project’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Example Fortran Project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Sphinx Fortran</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-sphinx">Installing Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-an-anaconda-python-environment">In an Anaconda Python Environment:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-sphinx-and-sphinx-fortran">Configure Sphinx and Sphinx-Fortran</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-the-initial-project">Generating the initial Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-the-initial-sphinx-documentation">Generating the initial Sphinx Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-sphinx-fortran">Enable Sphinx-Fortran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-enable-inter-sphinx">Optional: Enable Inter-Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-api-section">Create API section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-pages-for-user-manual">Create Pages For User Manual</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xref_examples.html">Cross-Referencing Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="md_all.html">MD Program</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Example Fortran Project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Sphinx Fortran</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/UsingSphinxFortran.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-sphinx-fortran">
+<h1>Using Sphinx Fortran<a class="headerlink" href="#using-sphinx-fortran" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installing-sphinx">
+<h2>Installing Sphinx<a class="headerlink" href="#installing-sphinx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general">
+<h3>General:<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>use Python 2.7.x</li>
+<li>install sphinx</li>
+<li>install sphinx-fortran</li>
+<li>optional: install sphinx_rtd_theme</li>
+<li>Create directory <code class="docutils literal notranslate"><span class="pre">${MY_FORTRAN_PROJECT}/doc</span></code> and change into it.</li>
+<li>Run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code></li>
+</ol>
+</div>
+<div class="section" id="in-an-anaconda-python-environment">
+<h3>In an Anaconda Python Environment:<a class="headerlink" href="#in-an-anaconda-python-environment" title="Permalink to this headline">¶</a></h3>
+<p>As Sphinx-Fortran at this point doesn’t support Python 3,
+we start off with a Python-2 based conda environment:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda create -n sphinx_fortran <span class="nv">python</span><span class="o">=</span><span class="m">2</span>
+<span class="go">Fetching package metadata ...........</span>
+<span class="go">[...]</span>
+<span class="gp">#</span> To activate this environment, use:
+<span class="gp">#</span> &gt; <span class="nb">source</span> activate sphinx_fortran
+<span class="gp">#</span>
+<span class="gp">#</span> To deactivate an active environment, use:
+<span class="gp">#</span> &gt; <span class="nb">source</span> deactivate
+
+<span class="gp">$</span> <span class="nb">source</span> activate sphinx_fortran
+<span class="gp">(sphinx_fortran)$</span> conda install sphinx sphinx_rtd_theme
+
+<span class="gp">#</span> The latest release of sphinx-fortran on PyPi does not work with
+<span class="gp">#</span> Sphinx <span class="m">1</span>.6b1 or newer.
+<span class="gp">#</span> <span class="o">(</span>sphinx_fortran<span class="o">)</span>$ pip install sphinx-fortran
+<span class="gp">#</span> Install master from GitHub instead:
+<span class="gp">(sphinx_fortran)$</span> git clone https://github.com/VACUMM/sphinx-fortran.git
+<span class="gp">(sphinx_fortran)$</span> <span class="nb">cd</span> sphinx-fortran
+<span class="gp">(sphinx_fortran)$</span> python setup.py install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="configure-sphinx-and-sphinx-fortran">
+<h2>Configure Sphinx and Sphinx-Fortran<a class="headerlink" href="#configure-sphinx-and-sphinx-fortran" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generating-the-initial-project">
+<h3>Generating the initial Project<a class="headerlink" href="#generating-the-initial-project" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir Example_Fortran
+<span class="gp">$</span> <span class="nb">cd</span> Example_Fortran
+<span class="gp">$</span> mkdir src
+<span class="gp">$</span> wget https://acenet-arc.github.io/ACENET_Summer_School_General/code/profiling/md_gprof.f90
+<span class="gp">$</span> mv  md_gprof.f90  src/md.f90
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-the-initial-sphinx-documentation">
+<h3>Generating the initial Sphinx Documentation<a class="headerlink" href="#generating-the-initial-sphinx-documentation" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">(sphinx_fortran) Example_Fortran $ echo &#39;**/_build/&#39;  &gt;&gt; .gitignore</span>
+<span class="go">(sphinx_fortran) Example_Fortran $ mkdir docs</span>
+<span class="go">(sphinx_fortran) Example_Fortran $ cd docs</span>
+<span class="go">(sphinx_fortran) docs $ sphinx-quickstart</span>
+<span class="gp">#</span> leaving all values at their default except <span class="k">for</span>:
+<span class="gp">&gt;</span> Project name: Example Fortran Project
+<span class="gp">&gt;</span> Author name<span class="o">(</span>s<span class="o">)</span>: John Doe
+
+<span class="go">(sphinx_fortran) docs $ make html</span>
+<span class="gp">#</span> open the HTML documentation in Firefox:
+<span class="go">(sphinx_fortran) docs $ firefox _build/html/index.html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enable-sphinx-fortran">
+<h3>Enable Sphinx-Fortran<a class="headerlink" href="#enable-sphinx-fortran" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Un-comment the following lines under “Path Setup”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">sphinx.ext.autodoc</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinxfortran.fortran_domain</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sphinxfortran.fortran_autodoc</span></code> to the list of extensions
+in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># [...]</span>
+<span class="hll">    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+</span><span class="hll">    <span class="s1">&#39;sphinxfortran.fortran_domain&#39;</span><span class="p">,</span>
+</span>    <span class="s1">&#39;sphinxfortran.fortran_autodoc&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Some other extensions like <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/math.html#module-sphinx.ext.imgmath" title="(in Sphinx v1.7.3+)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.imgmath</span></code></a> or
+<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/todo.html#module-sphinx.ext.todo" title="(in Sphinx v1.7.3+)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.todo</span></code></a> might be useful as well.</p>
+</li>
+<li><p class="first">Set the <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> to something nicer than the default, e.g.
+<code class="docutils literal notranslate"><span class="pre">bizstyle</span></code>, <code class="docutils literal notranslate"><span class="pre">classic</span></code> or <code class="docutils literal notranslate"><span class="pre">sphinxdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the following configuration to the end of <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## -- Options for Sphinx-Fortran ---------------------------------------------</span>
+<span class="c1"># List of possible extensions in the case of a directory listing</span>
+<span class="n">fortran_ext</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;f90&#39;</span><span class="p">,</span> <span class="s1">&#39;F90&#39;</span><span class="p">,</span> <span class="s1">&#39;f95&#39;</span><span class="p">,</span> <span class="s1">&#39;F95&#39;</span><span class="p">]</span>
+
+<span class="c1"># This variable must be set with file pattern, like &quot;*.f90&quot;, or a list of them. </span>
+<span class="c1"># It is also possible to specify a directory name; in this case, all files than </span>
+<span class="c1"># have an extension matching those define by the config variable `fortran_ext` </span>
+<span class="c1"># are used.</span>
+<span class="n">fortran_src</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../src/&#39;</span><span class="p">)</span>
+
+<span class="c1"># Indentation string or length (default 4). If it is an integer, </span>
+<span class="c1"># indicates the number of spaces.</span>
+<span class="n">fortran_indent</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="optional-enable-inter-sphinx">
+<span id="local-intersphinx-label"></span><h3>Optional: Enable Inter-Sphinx<a class="headerlink" href="#optional-enable-inter-sphinx" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">intersphinx</span></code> extension allows linking to pages of other sphinx-based
+documentation. Here we enable the extension and then create references to
+the documentation of the Sphinx project itself and the sphinxfortran extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+<span class="hll">    <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+</span>    <span class="c1"># [...]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## -- Options for Inter-Sphinx---- -------------------------------------------</span>
+<span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;python&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="s1">&#39;https://docs.python.org/3&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+   <span class="s1">&#39;sphinx&#39;</span><span class="p">:</span>         <span class="p">(</span><span class="s1">&#39;http://www.sphinx-doc.org/en/stable&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
+   <span class="s1">&#39;sphinxfortran&#39;</span><span class="p">:</span>  <span class="p">(</span><span class="s1">&#39;http://sphinx-fortran.readthedocs.io/en/latest/&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can include a link to the documentation of  <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.3+)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span></code></a>
+by including <code class="docutils literal notranslate"><span class="pre">:py:mod:`Intersphinx&lt;sphinx:sphinx.ext.intersphinx&gt;`</span></code>
+in this <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.
+Refer to <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">Cross-referencing syntax</span></a> and
+<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.3+)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span> <span class="pre">Documentaion</span></code></a> on how to
+use it.</p>
+</div>
+</div>
+<div class="section" id="create-api-section">
+<h2>Create API section<a class="headerlink" href="#create-api-section" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Add the following lines to the <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="gh">API</span>
+<span class="gh">===</span>
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> <span class="nf">1</span>
+
+   md_all
+</pre></div>
+</div>
+<p>The entry <code class="docutils literal notranslate"><span class="pre">md_gprof_all</span></code> adds a link to the file <code class="docutils literal notranslate"><span class="pre">md_gprof_all.rst</span></code> to the
+API index.</p>
+</li>
+<li><p class="first">Create <code class="docutils literal notranslate"><span class="pre">md_all.rst</span></code> with the following content:</p>
+<div class="highlight-rest notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_md_program:</span>
+
+<span class="gh">MD Program</span>
+<span class="gh">==========</span>
+
+This is a simple Molecular Dynamics program.
+
+<span class="p">..</span> <span class="ow">f:autosrcfile</span><span class="p">::</span> md.f90
+</pre></div>
+</td></tr></table></div>
+<p>This file contains the following directives:</p>
+<ul>
+<li><p class="first">The reference label <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_md_program:</span></code> can be used
+to link to the section header by using <code class="docutils literal notranslate"><span class="pre">:ref:`md_program`</span></code> in
+a .rst file. E.g. see <a class="reference internal" href="md_all.html#md-program"><span class="std std-ref">MD Program</span></a>.</p>
+</li>
+<li><p class="first">The line:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">f:autosrcfile::</span> <span class="pre">md.f90</span></code></li>
+</ul>
+</div></blockquote>
+<p>will include the <a class="reference external" href="http://sphinx-fortran.readthedocs.io/en/latest/user.autodoc.html">autodoc</a> for these Fortran files in this document.
+If appropriate <a class="reference external" href="http://sphinx-fortran.readthedocs.io/en/latest/user.autodoc.html#header-comments">header-comments</a> and <a class="reference external" href="http://sphinx-fortran.readthedocs.io/en/latest/user.autodoc.html#inline-comments">inline-comments</a> have been added
+to the Fortran code, these will be added to the API description of the
+elements included in those files.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Create more API pages with Autodocs. For projects consisting of many source
+files, it good to organize them a bit.
+Pages can also be organized hierarchically by adding a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> to
+a page and define sub-pages.
+See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="create-pages-for-user-manual">
+<h2>Create Pages For User Manual<a class="headerlink" href="#create-pages-for-user-manual" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Apart from API documentation, User-Manual pages can be written and added
+to the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> in <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> (Just as this page).</li>
+<li>These pages can be organized hierarchically as well, by adding a
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> to a page and define sub-pages.
+See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xref_examples.html" class="btn btn-neutral float-right" title="Cross-Referencing Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Example Fortran Project’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Oliver Stueker.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

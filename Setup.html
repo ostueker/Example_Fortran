@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setup &mdash; Example Fortran Project  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Example Fortran Project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingSphinxFortran.html">Using Sphinx Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xref_examples.html">Cross-Referencing Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="md_all.html">MD Program</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Example Fortran Project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Setup.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup">
+<span id="setup"></span><h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preparing-a-python-environment">
+<span id="preparing-a-python-environment"></span><h2>Preparing a Python environment<a class="headerlink" href="#preparing-a-python-environment" title="Permalink to this headline">¶</a></h2>
+<p>As Sphinx-Fortran at this point doesn’t support Python 3,
+we start off with a Python-2 based conda environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda create -n sphinx_fortran <span class="nv">python</span><span class="o">=</span><span class="m">2</span> 
+<span class="go">Fetching package metadata ...........</span>
+<span class="go">[...]</span>
+<span class="gp">#</span> To activate this environment, use:
+<span class="gp">#</span> &gt; <span class="nb">source</span> activate sphinx_fortran
+<span class="gp">#</span>
+<span class="gp">#</span> To deactivate an active environment, use:
+<span class="gp">#</span> &gt; <span class="nb">source</span> deactivate
+
+<span class="gp">$</span> <span class="nb">source</span> activate sphinx_fortran
+<span class="gp">(sphinx_fortran)$</span> conda install sphinx sphinx_rtd_theme
+
+<span class="gp">#</span> The latest release of sphinx-fortran on PyPi does not work with 
+<span class="gp">#</span> Sphinx <span class="m">1</span>.6b1 or newer.
+<span class="gp">#</span> <span class="o">(</span>sphinx_fortran<span class="o">)</span>$ pip install sphinx-fortran
+<span class="gp">#</span> Install master from GitHub instead:
+<span class="gp">(sphinx_fortran)$</span> git clone https://github.com/VACUMM/sphinx-fortran.git
+<span class="gp">(sphinx_fortran)$</span> <span class="nb">cd</span> sphinx-fortran
+<span class="gp">(sphinx_fortran)$</span> python setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-the-initial-project">
+<span id="generating-the-initial-project"></span><h2>Generating the initial Project<a class="headerlink" href="#generating-the-initial-project" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir Example_Fortran
+<span class="gp">$</span> <span class="nb">cd</span> Example_Fortran
+<span class="gp">$</span> mkdir src
+<span class="gp">$</span> wget https://acenet-arc.github.io/ACENET_Summer_School_General/code/profiling/md_gprof.f90
+<span class="gp">$</span> mv  md_gprof.f90  src/
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-the-initial-sphinx-documentaton">
+<span id="generating-the-initial-sphinx-documentaton"></span><h2>Generating the initial Sphinx Documentaton<a class="headerlink" href="#generating-the-initial-sphinx-documentaton" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">(sphinx_fortran) Example_Fortran $ echo &#39;**/_build/&#39;  &gt;&gt; .gitignore</span>
+<span class="go">(sphinx_fortran) Example_Fortran $ mkdir docs</span>
+<span class="go">(sphinx_fortran) Example_Fortran $ cd docs</span>
+<span class="go">(sphinx_fortran) docs $ sphinx-quickstart</span>
+<span class="gp">#</span> leaving all values at their default except <span class="k">for</span>:
+<span class="gp">&gt;</span> Project name: Example Fortran Project
+<span class="gp">&gt;</span> Author name<span class="o">(</span>s<span class="o">)</span>: John Doe
+
+<span class="go">(sphinx_fortran) docs $ make html</span>
+<span class="go">(sphinx_fortran) docs $ firefox _build/html/index.html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="activate-sphinx-fortran-in-conf-py">
+<span id="activate-sphinx-fortran-in-conf-py"></span><h2>Activate Sphinx-Fortran in conf.py<a class="headerlink" href="#activate-sphinx-fortran-in-conf-py" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li>Un-comment the following lines under “Path Setup”:</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>Add <code class="docutils literal notranslate"><span class="pre">sphinxfortran.fortran_domain</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinxfortran.fortran_autodoc</span></code>
+to the extensions:</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.imgmath&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.ifconfig&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinxfortran.fortran_domain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinxfortran.fortran_autodoc&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>Add the following configurations for sphinx-fortran e.g. to the end:</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## FORTRAN AUTODOC</span>
+<span class="c1"># List of possible extensions in the case of a directory listing</span>
+<span class="n">fortran_ext</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;f90&#39;</span><span class="p">,</span> <span class="s1">&#39;F90&#39;</span><span class="p">,</span> <span class="s1">&#39;f95&#39;</span><span class="p">,</span> <span class="s1">&#39;F95&#39;</span><span class="p">]</span>
+
+<span class="c1"># This variable must be set with file pattern, like &quot;*.f90&quot;, or a list of them. </span>
+<span class="c1"># It is also possible to specify a directory name; in this case, all files than </span>
+<span class="c1"># have an extension matching those define by the config variable `fortran_ext` </span>
+<span class="c1"># are used.</span>
+<span class="n">fortran_src</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../src/&#39;</span><span class="p">)</span>
+
+<span class="c1"># Indentation string or length (default 4). If it is an integer, </span>
+<span class="c1"># indicates the number of spaces.</span>
+<span class="n">fortran_indent</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Oliver Stueker.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
