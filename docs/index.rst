@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 1
 
    UsingSphinxFortran
+   RefactoringFortranForSphinx
    xref_examples
 
 API
