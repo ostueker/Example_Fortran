@@ -22,6 +22,7 @@ API
   :caption: Contents:
 
   md_all
+  md_refactor
 
 
 Indices and tables
