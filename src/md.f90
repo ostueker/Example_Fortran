@@ -1,5 +1,4 @@
 program main
-
 !*****************************************************************************80
 !
 !! MAIN is the main program for MD.
@@ -223,7 +222,6 @@ program main
   stop
 end
 subroutine compute ( np, nd, pos, vel, mass, f, pot, kin )
-
 !*****************************************************************************80
 !
 !! COMPUTE computes the forces and energies.
