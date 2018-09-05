@@ -45,7 +45,7 @@ $ wget https://acenet-arc.github.io/ACENET_Summer_School_General/code/profiling/
 $ mv  md_gprof.f90  src/
 ```
 
-## Generating the initial Sphinx Documentaton
+## Generating the initial Sphinx Documentation
 ```console
 (sphinx_fortran) Example_Fortran $ echo '**/_build/'  >> .gitignore
 (sphinx_fortran) Example_Fortran $ mkdir docs
