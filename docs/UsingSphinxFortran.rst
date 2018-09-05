@@ -91,7 +91,7 @@ Enable Sphinx-Fortran
     in ``conf.py``:
 
     ..  code-block:: python
-        :emphasize-lines: 3,4
+        :emphasize-lines: 3,4,5
 
         extensions = [
             # [...]
