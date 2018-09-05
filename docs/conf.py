@@ -173,9 +173,9 @@ texinfo_documents = [
 
 ## -- Options for Inter-Sphinx---- -------------------------------------------
 intersphinx_mapping = {
+    'python':         ('https://docs.python.org/3', None),
     'sphinx':         ('http://www.sphinx-doc.org/en/stable', None),
     'sphinxfortran':  ('http://sphinx-fortran.readthedocs.io/en/latest/', None),
-    'python':         ('https://docs.python.org/3', None)
 }
 
 ## -- Options for Sphinx-Fortran ---------------------------------------------
@@ -186,7 +186,7 @@ fortran_ext = ['f90', 'F90', 'f95', 'F95']
 # It is also possible to specify a directory name; in this case, all files than 
 # have an extension matching those define by the config variable `fortran_ext` 
 # are used.
-fortran_src = [ os.path.abspath('../src/') ]
+fortran_src = [ os.path.abspath('../src/'),  ]
 
 # Indentation string or length (default 4). If it is an integer, 
 # indicates the number of spaces.
