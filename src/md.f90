@@ -316,41 +316,7 @@ subroutine compute ( np, nd, pos, vel, mass, f, pot, kin )
   
   return
 end
-subroutine calc_distance (np, nd, pos, i, j, rij, d, d2)
-    !
-    !  Calculate Distance vector, scalar distance and trucated distance
-    !    between atoms i and j.
-    ! 
-    !  Parameters:
-    !    Input,  integer ( kind = 4 ) NP, the number of particles.
-    !    Input,  integer ( kind = 4 ) ND, the number of spatial dimensions.
-    !    Input,  real ( kind = 8 )    POS(ND,NP), the positions.
-    !    Input,  integer ( kind = 4 ) I,  index of particle I.
-    !    Input,  integer ( kind = 4 ) J,  index of particle J.
-    !
-    !    Output, real ( kind = 8 )    Rij(nd), distance vector
-    !    Output, real ( kind = 8 )    D,  distance.
-    !    Output, real ( kind = 8 )    D2, trucated distance.
-    implicit none
-    integer ( kind = 4 ) np
-    integer ( kind = 4 ) nd
 
-    real ( kind = 8 ) d
-    real ( kind = 8 ) d2
-    integer ( kind = 4 ) i
-    integer ( kind = 4 ) j
-    real ( kind = 8 ), parameter :: PI2 = 3.141592653589793D+00 / 2.0D+00
-    real ( kind = 8 ) pos(nd,np)
-    real ( kind = 8 ) rij(nd)
-
-    rij(1:nd) = pos(1:nd,i) - pos(1:nd,j)
-
-    d = sqrt ( sum ( rij(1:nd)**2 ) )
-    !
-    !  Truncate the distance.
-    !
-    d2 = min ( d, PI2 )
-end subroutine calc_distance
 subroutine calc_pot (d2, pot)
     !
     !  Calculate potential energy for truncated distance D2.
