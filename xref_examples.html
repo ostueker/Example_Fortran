@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MD Program" href="md_all.html" />
-    <link rel="prev" title="Using Sphinx Fortran" href="UsingSphinxFortran.html" /> 
+    <link rel="next" title="Links" href="Links.html" />
+    <link rel="prev" title="Refactoring Fortran For Sphinx" href="RefactoringFortranForSphinx.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,16 +80,19 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="UsingSphinxFortran.html">Using Sphinx Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RefactoringFortranForSphinx.html">Refactoring Fortran For Sphinx</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cross-Referencing Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples-for-local-references">Examples for local references:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples-for-intersphinx-references">Examples for Intersphinx references:</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Links.html">Links</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="md_all.html">MD Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_refactor.html">MD Refactor</a></li>
 </ul>
 
             
@@ -164,7 +167,7 @@
 <li>The <code class="docutils literal notranslate"><span class="pre">:py:mod:</span></code>-role indicates that the target is a Python module.
 When the target however is addressed by a reference name, the
 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> role needs to be used.  In this way one can cross-reference
-arbitrary locations. See: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.3+)"><span>Cross-referencing syntax</span></a></li>
+arbitrary locations. See: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.9)"><span>Cross-referencing syntax</span></a></li>
 <li>The role is followed by the reference enclosed in back-ticks (<code class="docutils literal notranslate"><span class="pre">`</span></code>).
 The reference consists of either:<ul>
 <li>just the reference-label for a local reference,
@@ -204,9 +207,9 @@ becomes:                     <a class="reference internal" href="UsingSphinxFort
 <blockquote>
 <div><ul class="simple">
 <li>Intersphinx ref w/o text:  <code class="docutils literal notranslate"><span class="pre">:ref:`sphinx:xref-syntax`</span></code>
-becomes:                     <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.3+)"><span>Cross-referencing syntax</span></a></li>
+becomes:                     <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.9)"><span>Cross-referencing syntax</span></a></li>
 <li>Intersphinx ref with text: <code class="docutils literal notranslate"><span class="pre">:ref:`X-Ref</span> <span class="pre">syntax&lt;sphinx:xref-syntax&gt;`</span></code>
-becomes:                     <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">X-Ref syntax</span></a></li>
+becomes:                     <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.9)"><span class="xref std std-ref">X-Ref syntax</span></a></li>
 <li>Intersphinx mod w/o text:  <code class="docutils literal notranslate"><span class="pre">:mod:`python:math`</span></code>
 becomes:                     <a class="reference external" href="https://docs.python.org/3/library/math.html#module-math" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">math</span></code></a></li>
 <li>Intersphinx mod with text: <code class="docutils literal notranslate"><span class="pre">:mod:`Python</span> <span class="pre">Math</span> <span class="pre">module&lt;python:math&gt;`</span></code>
@@ -224,10 +227,10 @@ becomes:                     <a class="reference external" href="https://docs.py
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="md_all.html" class="btn btn-neutral float-right" title="MD Program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Links.html" class="btn btn-neutral float-right" title="Links" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="UsingSphinxFortran.html" class="btn btn-neutral" title="Using Sphinx Fortran" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="RefactoringFortranForSphinx.html" class="btn btn-neutral" title="Refactoring Fortran For Sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

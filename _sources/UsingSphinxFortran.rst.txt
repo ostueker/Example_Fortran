@@ -91,7 +91,7 @@ Enable Sphinx-Fortran
     in ``conf.py``:
 
     ..  code-block:: python
-        :emphasize-lines: 3,4
+        :emphasize-lines: 3,4,5
 
         extensions = [
             # [...]
@@ -149,7 +149,7 @@ Now we can include a link to the documentation of  :py:mod:`Intersphinx<sphinx:s
 by including ``:py:mod:`Intersphinx<sphinx:sphinx.ext.intersphinx>``` 
 in this ``.rst`` file.  
 Refer to :ref:`Cross-referencing syntax<sphinx:xref-syntax>` and 
-:py:mod:`Intersphinx Documentaion<sphinx:sphinx.ext.intersphinx>` on how to
+:py:mod:`Intersphinx Documentation<sphinx:sphinx.ext.intersphinx>` on how to
 use it.
 
 

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cross-Referencing Examples" href="xref_examples.html" />
+    <link rel="next" title="Refactoring Fortran For Sphinx" href="RefactoringFortranForSphinx.html" />
     <link rel="prev" title="Welcome to Example Fortran Project’s documentation!" href="index.html" /> 
 
   
@@ -96,11 +96,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#create-pages-for-user-manual">Create Pages For User Manual</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="RefactoringFortranForSphinx.html">Refactoring Fortran For Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xref_examples.html">Cross-Referencing Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Links.html">Links</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="md_all.html">MD Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_refactor.html">MD Refactor</a></li>
 </ul>
 
             
@@ -253,12 +256,12 @@ in <code class="docutils literal notranslate"><span class="pre">conf.py</span></
     <span class="c1"># [...]</span>
 <span class="hll">    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
 </span><span class="hll">    <span class="s1">&#39;sphinxfortran.fortran_domain&#39;</span><span class="p">,</span>
-</span>    <span class="s1">&#39;sphinxfortran.fortran_autodoc&#39;</span><span class="p">,</span>
-<span class="p">]</span>
+</span><span class="hll">    <span class="s1">&#39;sphinxfortran.fortran_autodoc&#39;</span><span class="p">,</span>
+</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Some other extensions like <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/math.html#module-sphinx.ext.imgmath" title="(in Sphinx v1.7.3+)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.imgmath</span></code></a> or
-<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/todo.html#module-sphinx.ext.todo" title="(in Sphinx v1.7.3+)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.todo</span></code></a> might be useful as well.</p>
+<p>Some other extensions like <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/math.html#module-sphinx.ext.imgmath" title="(in Sphinx v1.7.9)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.imgmath</span></code></a> or
+<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/todo.html#module-sphinx.ext.todo" title="(in Sphinx v1.7.9)"><code class="docutils literal notranslate"><span class="pre">sphinx.ext.todo</span></code></a> might be useful as well.</p>
 </li>
 <li><p class="first">Set the <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> to something nicer than the default, e.g.
 <code class="docutils literal notranslate"><span class="pre">bizstyle</span></code>, <code class="docutils literal notranslate"><span class="pre">classic</span></code> or <code class="docutils literal notranslate"><span class="pre">sphinxdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code> :</p>
@@ -275,7 +278,7 @@ in <code class="docutils literal notranslate"><span class="pre">conf.py</span></
 <span class="c1"># It is also possible to specify a directory name; in this case, all files than </span>
 <span class="c1"># have an extension matching those define by the config variable `fortran_ext` </span>
 <span class="c1"># are used.</span>
-<span class="n">fortran_src</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../src/&#39;</span><span class="p">)</span>
+<span class="n">fortran_src</span> <span class="o">=</span> <span class="p">[</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../src/&#39;</span><span class="p">),</span>  <span class="p">]</span>
 
 <span class="c1"># Indentation string or length (default 4). If it is an integer, </span>
 <span class="c1"># indicates the number of spaces.</span>
@@ -304,11 +307,11 @@ the documentation of the Sphinx project itself and the sphinxfortran extension.<
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we can include a link to the documentation of  <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.3+)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span></code></a>
+<p>Now we can include a link to the documentation of  <a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span></code></a>
 by including <code class="docutils literal notranslate"><span class="pre">:py:mod:`Intersphinx&lt;sphinx:sphinx.ext.intersphinx&gt;`</span></code>
 in this <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file.
-Refer to <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">Cross-referencing syntax</span></a> and
-<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.3+)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span> <span class="pre">Documentaion</span></code></a> on how to
+Refer to <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/inline.html#xref-syntax" title="(in Sphinx v1.7.9)"><span class="xref std std-ref">Cross-referencing syntax</span></a> and
+<a class="reference external" href="http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx" title="(in Sphinx v1.7.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Intersphinx</span> <span class="pre">Documentation</span></code></a> on how to
 use it.</p>
 </div>
 </div>
@@ -368,7 +371,7 @@ elements included in those files.</p>
 files, it good to organize them a bit.
 Pages can also be organized hierarchically by adding a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> to
 a page and define sub-pages.
-See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</p>
+See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.9)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</p>
 </li>
 </ol>
 </div>
@@ -379,7 +382,7 @@ See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/
 to the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> in <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> (Just as this page).</li>
 <li>These pages can be organized hierarchically as well, by adding a
 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> to a page and define sub-pages.
-See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.3+)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</li>
+See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html#toctree-directive" title="(in Sphinx v1.7.9)"><span class="xref std std-ref">TOC tree</span></a> reference in the Sphinx docs.</li>
 </ol>
 </div>
 </div>
@@ -392,7 +395,7 @@ See the <a class="reference external" href="http://www.sphinx-doc.org/en/stable/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xref_examples.html" class="btn btn-neutral float-right" title="Cross-Referencing Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="RefactoringFortranForSphinx.html" class="btn btn-neutral float-right" title="Refactoring Fortran For Sphinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Welcome to Example Fortran Project’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

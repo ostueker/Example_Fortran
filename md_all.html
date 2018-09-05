@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Cross-Referencing Examples" href="xref_examples.html" /> 
+    <link rel="next" title="MD Refactor" href="md_refactor.html" />
+    <link rel="prev" title="Links" href="Links.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -79,11 +80,14 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="UsingSphinxFortran.html">Using Sphinx Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RefactoringFortranForSphinx.html">Refactoring Fortran For Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xref_examples.html">Cross-Referencing Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Links.html">Links</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MD Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_refactor.html">MD Refactor</a></li>
 </ul>
 
             
@@ -151,6 +155,383 @@
   <div class="section" id="md-program">
 <span id="id1"></span><h1>MD Program<a class="headerlink" href="#md-program" title="Permalink to this headline">¶</a></h1>
 <p>This is a simple Molecular Dynamics program.</p>
+<p class="rubric">Program</p>
+<dl class="program">
+<dt id="f/main">
+<em class="property">program  </em><code class="descname">main</code><a class="headerlink" href="#f/main" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id2"><span class="problematic" id="id3">**</span></a><a href="#id4"><span class="problematic" id="id5">**</span></a><a href="#id6"><span class="problematic" id="id7">**</span></a><a href="#id8"><span class="problematic" id="id9">**</span></a><a href="#id10"><span class="problematic" id="id11">**</span></a><a href="#id12"><span class="problematic" id="id13">**</span></a><a href="#id14"><span class="problematic" id="id15">**</span></a><a href="#id16"><span class="problematic" id="id17">**</span></a><a href="#id18"><span class="problematic" id="id19">**</span></a><a href="#id20"><span class="problematic" id="id21">**</span></a><a href="#id22"><span class="problematic" id="id23">**</span></a><a href="#id24"><span class="problematic" id="id25">**</span></a><a href="#id26"><span class="problematic" id="id27">**</span></a><a href="#id28"><span class="problematic" id="id29">**</span></a><a href="#id30"><span class="problematic" id="id31">**</span></a><a href="#id32"><span class="problematic" id="id33">**</span></a><a href="#id34"><span class="problematic" id="id35">**</span></a><a href="#id36"><span class="problematic" id="id37">**</span></a><a href="#id38"><span class="problematic" id="id39">**</span></a><a href="#id40"><span class="problematic" id="id41">**</span></a><a href="#id42"><span class="problematic" id="id43">**</span></a><a href="#id44"><span class="problematic" id="id45">**</span></a><a href="#id46"><span class="problematic" id="id47">**</span></a><a href="#id48"><span class="problematic" id="id49">**</span></a><a href="#id50"><span class="problematic" id="id51">**</span></a><a href="#id52"><span class="problematic" id="id53">**</span></a><a href="#id54"><span class="problematic" id="id55">**</span></a><a href="#id56"><span class="problematic" id="id57">**</span></a><a href="#id58"><span class="problematic" id="id59">**</span></a><a href="#id60"><span class="problematic" id="id61">**</span></a><a href="#id62"><span class="problematic" id="id63">**</span></a><a href="#id64"><span class="problematic" id="id65">**</span></a><a href="#id66"><span class="problematic" id="id67">**</span></a><a href="#id68"><span class="problematic" id="id69">**</span></a><a href="#id70"><span class="problematic" id="id71">**</span></a><a href="#id72"><span class="problematic" id="id73">**</span></a><a href="#id74"><span class="problematic" id="id75">**</span></a><a href="#id76"><span class="problematic" id="id77">**</span></a><a href="#id78"><span class="problematic" id="id79">*</span></a>80</p>
+<p>! MAIN is the main program for MD.</p>
+<blockquote>
+<div><p>Discussion:</p>
+<blockquote>
+<div><p>MD implements a simple molecular dynamics simulation.</p>
+<p>The velocity Verlet time integration scheme is used.</p>
+<p>The particles interact with a central pair potential.</p>
+<p>Based on a FORTRAN90 program by Bill Magro.</p>
+<p>Calculating distances, forces, potential- and kinetic-
+energies have been broken out into subroutines to make this
+a more interesting example to analyze with a profiler.</p>
+<blockquote>
+<div>2018-05-25 Oliver Stueker</div></blockquote>
+</div></blockquote>
+<p>Usage:</p>
+<blockquote>
+<div><p>md nd np step_num dt</p>
+<p>where</p>
+<ul class="simple">
+<li>nd is the spatial dimension (2 or 3);</li>
+<li>np is the number of particles (500, for instance);</li>
+<li>step_num is the number of time steps (500, for instance).</li>
+<li>dt is the time step (0.1 for instance )</li>
+</ul>
+</div></blockquote>
+<p>Licensing:</p>
+<blockquote>
+<div>This code is distributed under the GNU LGPL license.</div></blockquote>
+<p>Modified:</p>
+<blockquote>
+<div>25 May 2018 by Oliver Stueker</div></blockquote>
+<p>Author:</p>
+<blockquote>
+<div>John Burkardt</div></blockquote>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Call to:</th><td class="field-body"><a class="reference internal" href="#f/_/timestamp" title="f/_/timestamp"><code class="xref f f-func docutils literal notranslate"><span class="pre">timestamp()</span></code></a>, <a class="reference internal" href="#f/_/s_to_i4" title="f/_/s_to_i4"><code class="xref f f-func docutils literal notranslate"><span class="pre">s_to_i4()</span></code></a>, <a class="reference internal" href="#f/_/s_to_r8" title="f/_/s_to_r8"><code class="xref f f-func docutils literal notranslate"><span class="pre">s_to_r8()</span></code></a>, <a class="reference internal" href="#f/_/initialize" title="f/_/initialize"><code class="xref f f-func docutils literal notranslate"><span class="pre">initialize()</span></code></a>, <a class="reference internal" href="#f/_/update" title="f/_/update"><code class="xref f f-func docutils literal notranslate"><span class="pre">update()</span></code></a>, <a class="reference internal" href="#f/_/compute" title="f/_/compute"><code class="xref f f-func docutils literal notranslate"><span class="pre">compute()</span></code></a>, <a class="reference internal" href="RefactoringFortranForSphinx.html#f/_/calc_distance" title="f/_/calc_distance"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_distance()</span></code></a>, <a class="reference internal" href="#f/_/calc_pot" title="f/_/calc_pot"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_pot()</span></code></a>, <a class="reference internal" href="#f/_/calc_force" title="f/_/calc_force"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_force()</span></code></a>, <a class="reference internal" href="#f/_/calc_kin" title="f/_/calc_kin"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_kin()</span></code></a>, <a class="reference internal" href="#f/_/r8mat_uniform_ab" title="f/_/r8mat_uniform_ab"><code class="xref f f-func docutils literal notranslate"><span class="pre">r8mat_uniform_ab()</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric">Subroutines and functions</p>
+<dl class="subroutine">
+<dt id="f/_/compute">
+<em class="property">subroutine  </em><code class="descname">compute</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>pos</em>, <em>vel</em>, <em>mass</em>, <em>f</em>, <em>pot</em>, <em>kin</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/compute" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id80"><span class="problematic" id="id81">**</span></a><a href="#id82"><span class="problematic" id="id83">**</span></a><a href="#id84"><span class="problematic" id="id85">**</span></a><a href="#id86"><span class="problematic" id="id87">**</span></a><a href="#id88"><span class="problematic" id="id89">**</span></a><a href="#id90"><span class="problematic" id="id91">**</span></a><a href="#id92"><span class="problematic" id="id93">**</span></a><a href="#id94"><span class="problematic" id="id95">**</span></a><a href="#id96"><span class="problematic" id="id97">**</span></a><a href="#id98"><span class="problematic" id="id99">**</span></a><a href="#id100"><span class="problematic" id="id101">**</span></a><a href="#id102"><span class="problematic" id="id103">**</span></a><a href="#id104"><span class="problematic" id="id105">**</span></a><a href="#id106"><span class="problematic" id="id107">**</span></a><a href="#id108"><span class="problematic" id="id109">**</span></a><a href="#id110"><span class="problematic" id="id111">**</span></a><a href="#id112"><span class="problematic" id="id113">**</span></a><a href="#id114"><span class="problematic" id="id115">**</span></a><a href="#id116"><span class="problematic" id="id117">**</span></a><a href="#id118"><span class="problematic" id="id119">**</span></a><a href="#id120"><span class="problematic" id="id121">**</span></a><a href="#id122"><span class="problematic" id="id123">**</span></a><a href="#id124"><span class="problematic" id="id125">**</span></a><a href="#id126"><span class="problematic" id="id127">**</span></a><a href="#id128"><span class="problematic" id="id129">**</span></a><a href="#id130"><span class="problematic" id="id131">**</span></a><a href="#id132"><span class="problematic" id="id133">**</span></a><a href="#id134"><span class="problematic" id="id135">**</span></a><a href="#id136"><span class="problematic" id="id137">**</span></a><a href="#id138"><span class="problematic" id="id139">**</span></a><a href="#id140"><span class="problematic" id="id141">**</span></a><a href="#id142"><span class="problematic" id="id143">**</span></a><a href="#id144"><span class="problematic" id="id145">**</span></a><a href="#id146"><span class="problematic" id="id147">**</span></a><a href="#id148"><span class="problematic" id="id149">**</span></a><a href="#id150"><span class="problematic" id="id151">**</span></a><a href="#id152"><span class="problematic" id="id153">**</span></a><a href="#id154"><span class="problematic" id="id155">**</span></a><a href="#id156"><span class="problematic" id="id157">*</span></a>80</p>
+<p>! COMPUTE computes the forces and energies.</p>
+<blockquote>
+<div><p>Discussion:</p>
+<blockquote>
+<div><p>The computation of forces and energies is fully parallel.</p>
+<p>The potential function V(X) is a harmonic well which smoothly
+saturates to a maximum value at PI/2:</p>
+<blockquote>
+<div>v(x) = ( sin ( min ( x, PI/2 ) ) )^2</div></blockquote>
+<p>The derivative of the potential is:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>dv(x) = 2.0D+00 * sin ( min ( x, PI/2 ) ) * cos ( min ( x, PI/2 ) )</dt>
+<dd>= sin ( 2.0 * min ( x, PI/2 ) )</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>Licensing:</p>
+<blockquote>
+<div>This code is distributed under the GNU LGPL license.</div></blockquote>
+<p>Modified:</p>
+<blockquote>
+<div>15 July 2008</div></blockquote>
+<p>Author:</p>
+<blockquote>
+<div>John Burkardt</div></blockquote>
+<p>Parameters:</p>
+<blockquote>
+<div><p>Input, integer ( kind = 4 ) NP, the number of particles.</p>
+<p>Input, integer ( kind = 4 ) ND, the number of spatial dimensions.</p>
+<p>Input, real ( kind = 8 ) POS(ND,NP), the positions.</p>
+<p>Input, real ( kind = 8 ) VEL(ND,NP), the velocities.</p>
+<p>Input, real ( kind = 8 ) MASS, the mass.</p>
+<p>Output, real ( kind = 8 ) F(ND,NP), the forces.</p>
+<p>Output, real ( kind = 8 ) POT, the total potential energy.</p>
+<p>Output, real ( kind = 8 ) KIN, the total kinetic energy.</p>
+</div></blockquote>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,1)</em><em>]</em></li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,0)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pos</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>vel</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>mass</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>f</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>pot</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>kin</strong><em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Call to:</th><td class="field-body"><p class="first last"><a class="reference internal" href="RefactoringFortranForSphinx.html#f/_/calc_distance" title="f/_/calc_distance"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_distance()</span></code></a>, <a class="reference internal" href="#f/_/calc_pot" title="f/_/calc_pot"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_pot()</span></code></a>, <a class="reference internal" href="#f/_/calc_force" title="f/_/calc_force"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_force()</span></code></a>, <a class="reference internal" href="#f/_/calc_kin" title="f/_/calc_kin"><code class="xref f f-func docutils literal notranslate"><span class="pre">calc_kin()</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/calc_pot">
+<em class="property">subroutine  </em><code class="descname">calc_pot</code><span class="sig-paren">(</span><em>d2</em>, <em>pot</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/calc_pot" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Calculate potential energy for truncated distance D2.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Input,  real ( kind = 8 ) D2,  trucated distance.
+In/Out, real ( kind = 8 ) POT, potential energy.</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d2</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>pot</strong><em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/_/compute" title="f/_/compute"><code class="xref f f-func docutils literal notranslate"><span class="pre">compute()</span></code></a>, <a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/calc_force">
+<em class="property">subroutine  </em><code class="descname">calc_force</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>i</em>, <em>d</em>, <em>d2</em>, <em>rij</em>, <em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/calc_force" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Add particle J’s contribution to the force on particle I.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Input,  integer ( kind = 4 ) NP, the number of particles.
+Input,  integer ( kind = 4 ) ND, the number of spatial dimensions.
+Input,  integer ( kind = 4 ) I,  index of particle I.
+Input,  real ( kind = 8 )    D, distance.
+Input,  real ( kind = 8 )    D2, trucated distance.
+Input,  real ( kind = 8 )    Rij(nd),  distance vector
+In/Out, real ( kind = 8 )    F(ND,NP), the forces.</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(f,1)</em><em>]</em></li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=len(rij)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong><em> [</em><em>integer</em><em>]</em></li>
+<li><strong>d</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>d2</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>rij</strong> (nd)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>f</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/_/compute" title="f/_/compute"><code class="xref f f-func docutils literal notranslate"><span class="pre">compute()</span></code></a>, <a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/calc_kin">
+<em class="property">subroutine  </em><code class="descname">calc_kin</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>vel</em>, <em>mass</em>, <em>kin</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/calc_kin" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Compute the total kinetic energy.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Input,  integer ( kind = 4 ) NP, the number of particles.
+Input,  integer ( kind = 4 ) ND, the number of spatial dimensions.
+Input,  real ( kind = 8 ) VEL(ND,NP), the velocities.
+Input,  real ( kind = 8 ) MASS, the mass.
+Output, real ( kind = 8 ) KIN, the total kinetic energy.</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(vel,1)</em><em>]</em></li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(vel,0)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vel</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>mass</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>kin</strong><em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/_/compute" title="f/_/compute"><code class="xref f f-func docutils literal notranslate"><span class="pre">compute()</span></code></a>, <a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/initialize">
+<em class="property">subroutine  </em><code class="descname">initialize</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>pos</em>, <em>vel</em>, <em>acc</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/initialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,1)</em><em>]</em></li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,0)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pos</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>vel</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>acc</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Call to:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/_/r8mat_uniform_ab" title="f/_/r8mat_uniform_ab"><code class="xref f f-func docutils literal notranslate"><span class="pre">r8mat_uniform_ab()</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/r8mat_uniform_ab">
+<em class="property">subroutine  </em><code class="descname">r8mat_uniform_ab</code><span class="sig-paren">(</span><em>m</em>, <em>n</em>, <em>a</em>, <em>b</em>, <em>seed</em>, <em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/r8mat_uniform_ab" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>m</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(r,0)</em><em>]</em></li>
+<li><strong>n</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(r,1)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>b</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>seed</strong><em> [</em><em>integer</em><em>]</em></li>
+<li><strong>r</strong> (m,n)<em> [</em><em>real</em><em>]</em> :: <p>’</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/_/initialize" title="f/_/initialize"><code class="xref f f-func docutils literal notranslate"><span class="pre">initialize()</span></code></a>, <a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/s_to_i4">
+<em class="property">subroutine  </em><code class="descname">s_to_i4</code><span class="sig-paren">(</span><em>s</em>, <em>value</em>, <em>ierror</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/s_to_i4" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong><em> [</em><em>character</em><em>]</em> :: <p>’</p>
+</li>
+<li><strong>value</strong><em> [</em><em>integer</em><em>]</em></li>
+<li><strong>ierror</strong><em> [</em><em>integer</em><em>]</em></li>
+<li><strong>length</strong><em> [</em><em>integer</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/s_to_r8">
+<em class="property">subroutine  </em><code class="descname">s_to_r8</code><span class="sig-paren">(</span><em>s</em>, <em>r8</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/s_to_r8" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong><em> [</em><em>character</em><em>]</em> :: <p>’</p>
+</li>
+<li><strong>r8</strong><em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/timestamp">
+<em class="property">subroutine  </em><code class="descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#f/_/timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="subroutine">
+<dt id="f/_/update">
+<em class="property">subroutine  </em><code class="descname">update</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>pos</em>, <em>vel</em>, <em>f</em>, <em>acc</em>, <em>mass</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/update" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,1)</em><em>]</em></li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>optional/default=shape(pos,0)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pos</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>vel</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>f</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>acc</strong> (nd,np)<em> [</em><em>real</em><em>]</em></li>
+<li><strong>mass</strong><em> [</em><em>real</em><em>]</em></li>
+<li><strong>dt</strong><em> [</em><em>real</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
@@ -161,8 +542,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="md_refactor.html" class="btn btn-neutral float-right" title="MD Refactor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="xref_examples.html" class="btn btn-neutral" title="Cross-Referencing Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="Links.html" class="btn btn-neutral" title="Links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

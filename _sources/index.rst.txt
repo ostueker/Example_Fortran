@@ -12,7 +12,9 @@ Contents:
    :maxdepth: 1
 
    UsingSphinxFortran
+   RefactoringFortranForSphinx
    xref_examples
+   Links
 
 API
 ===
@@ -21,6 +23,7 @@ API
   :caption: Contents:
 
   md_all
+  md_refactor
 
 
 Indices and tables

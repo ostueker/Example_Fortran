@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Refactoring Fortran For Sphinx &mdash; Example Fortran Project  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cross-Referencing Examples" href="xref_examples.html" />
+    <link rel="prev" title="Using Sphinx Fortran" href="UsingSphinxFortran.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Example Fortran Project
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="UsingSphinxFortran.html">Using Sphinx Fortran</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Refactoring Fortran For Sphinx</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#primer">Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-subroutine-calc-distance">Example 1: <cite>subroutine calc_distance</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xref_examples.html">Cross-Referencing Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Links.html">Links</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="md_all.html">MD Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md_refactor.html">MD Refactor</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Example Fortran Project</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Refactoring Fortran For Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/RefactoringFortranForSphinx.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="refactoring-fortran-for-sphinx">
+<h1>Refactoring Fortran For Sphinx<a class="headerlink" href="#refactoring-fortran-for-sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="primer">
+<h2>Primer<a class="headerlink" href="#primer" title="Permalink to this headline">¶</a></h2>
+<p>In the previous Chapter we have installed and configured Sphinx and
+Sphinx-Fortran for our project.  At this stage Sphinx-Fortran already
+extracts information on all <em>programs</em>, <em>modules</em>, <em>types</em>, <em>functions</em>
+and <em>subroutines</em> and the names of their parameters from the source-code,
+together with where the entity is used and which functions/routines it calls,
+and lists them on a page.</p>
+<p>What is missing is some context: What is the meaning of parameter <code class="docutils literal notranslate"><span class="pre">d</span></code>
+and what’s the unit in which <code class="docutils literal notranslate"><span class="pre">pot</span></code> is given?</p>
+<p>Sphinx reads and interprets header-comments (comments directly after a
+declaring the <em>program</em>, <em>module</em>, <em>subroutine</em>, etc.) which can contain
+reStructuredText markup.  They are included in the generated documentation
+and should be used to explain the behavior of the item, just like Doc-Strings
+in Python.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>A good documentation for a module, function or subroutine should
+give a good idea of it’s <em>behavior</em> (what it does) and <strong>not</strong> delve
+into the <em>implementation</em> (how it does it).</p>
+<p>A good way to achieve this is by starting with a short one-line summary,
+followed by an extended description and then one or more examples.
+These parts (summary, description, examples) should be separated by
+blank lines.</p>
+<p>Documentation that delves into details of implementation quickly
+gets out of date because it is not updated along with the code when
+the implementation changes.  This can then mislead the reader.</p>
+<p class="last">A few well chosen examples on the other hand can help the reader (and
+potential user of the function) to get a correct understanding of
+what result to expect for a particular invocation of the code.</p>
+</div>
+<p>Inline comments after variable declarations, which are passed as parameters
+to a subroutine/function, are also processed and should be used to supply
+a human-readable description of the variable.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Declare each of the parameters on an individual line!</p>
+</div>
+<p>Generic Examples are given in the <a class="reference external" href="http://sphinx-fortran.readthedocs.io/en/latest/user.autodoc.html#optimize-the-process">Sphinx-Fortran</a> documentation.</p>
+</div>
+<div class="section" id="example-1-subroutine-calc-distance">
+<h2>Example 1: <cite>subroutine calc_distance</cite><a class="headerlink" href="#example-1-subroutine-calc-distance" title="Permalink to this headline">¶</a></h2>
+<p>Before:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">calc_distance</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">rij</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+    <span class="c">!</span>
+    <span class="c">!  Calculate Distance vector, scalar distance and trucated distance</span>
+    <span class="c">!    between atoms i and j.</span>
+    <span class="c">!</span>
+    <span class="c">!  Parameters:</span>
+    <span class="c">!    Input,  integer ( kind = 4 ) NP, the number of particles.</span>
+    <span class="c">!    Input,  integer ( kind = 4 ) ND, the number of spatial dimensions.</span>
+    <span class="c">!    Input,  real ( kind = 8 )    POS(ND,NP), the positions.</span>
+    <span class="c">!    Input,  integer ( kind = 4 ) I,  index of particle I.</span>
+    <span class="c">!    Input,  integer ( kind = 4 ) J,  index of particle J.</span>
+    <span class="c">!</span>
+    <span class="c">!    Output, real ( kind = 8 )    Rij(nd), distance vector</span>
+    <span class="c">!    Output, real ( kind = 8 )    D,  distance.</span>
+    <span class="c">!    Output, real ( kind = 8 )    D2, trucated distance.</span>
+    <span class="k">implicit none</span>
+<span class="k">    </span><span class="kt">integer</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">)</span> <span class="n">np</span>
+    <span class="kt">integer</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">)</span> <span class="n">nd</span>
+
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">)</span> <span class="n">d</span>
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">)</span> <span class="n">d2</span>
+    <span class="kt">integer</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">)</span> <span class="n">i</span>
+    <span class="kt">integer</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">)</span> <span class="n">j</span>
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">PI2</span> <span class="o">=</span> <span class="mf">3.141592653589793D+00</span> <span class="o">/</span> <span class="mf">2.0D+00</span>
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">)</span> <span class="n">pos</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="n">np</span><span class="p">)</span>
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">)</span> <span class="n">rij</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+
+    <span class="n">rij</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="nb">sum</span> <span class="p">(</span> <span class="n">rij</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="c">!</span>
+    <span class="c">!  Truncate the distance.</span>
+    <span class="c">!</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="nb">min</span> <span class="p">(</span> <span class="n">d</span><span class="p">,</span> <span class="n">PI2</span> <span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">calc_distance</span>
+</pre></div>
+</div>
+<p>After:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">calc_distance</span> <span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">rij</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+<span class="c">!</span>
+<span class="c">!  Calculate Distance vector, scalar distance and trucated distance</span>
+<span class="c">!  between atoms i and j.</span>
+<span class="c">!  The distance is truncated at pi/2</span>
+<span class="c">!</span>
+    <span class="k">implicit none</span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">np</span>                <span class="c">! number of particles</span>
+    <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">nd</span>                <span class="c">! number of dimensions</span>
+    <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="n">np</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pos</span> <span class="c">! positions</span>
+    <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">i</span>                 <span class="c">! index particle I</span>
+    <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span>                 <span class="c">! index particle J</span>
+    <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rij</span>   <span class="c">! distance vector</span>
+    <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d</span>                   <span class="c">! distance</span>
+    <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d2</span>                  <span class="c">! trucated distance</span>
+
+    <span class="kt">real</span> <span class="p">(</span> <span class="nb">kind</span> <span class="o">=</span> <span class="mi">8</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">PI2</span> <span class="o">=</span> <span class="mf">3.141592653589793D+00</span> <span class="o">/</span> <span class="mf">2.0D+00</span>
+
+    <span class="n">rij</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">pos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="nb">sum</span> <span class="p">(</span> <span class="n">rij</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nd</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="c">!  Truncate the distance:</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="nb">min</span> <span class="p">(</span> <span class="n">d</span><span class="p">,</span> <span class="n">PI2</span> <span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">calc_distance</span>
+</pre></div>
+</div>
+<p>This will result in:</p>
+<p class="rubric">Subroutines and functions</p>
+<dl class="subroutine">
+<dt id="f/_/calc_distance">
+<em class="property">subroutine  </em><code class="descname">calc_distance</code><span class="sig-paren">(</span><em>np</em>, <em>nd</em>, <em>pos</em>, <em>i</em>, <em>j</em>, <em>rij</em>, <em>d</em>, <em>d2</em><span class="sig-paren">)</span><a class="headerlink" href="#f/_/calc_distance" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Calculate Distance vector, scalar distance and trucated distance
+between atoms i and j.
+The distance is truncated at pi/2</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Options:</th><td class="field-body"><ul class="first simple">
+<li><strong>np</strong><em> [</em><em>integer</em><em>,</em><em>in,optional/default=shape(pos,1)</em><em>]</em> :: number of particles</li>
+<li><strong>nd</strong><em> [</em><em>integer</em><em>,</em><em>in,optional/default=shape(pos,0)</em><em>]</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pos</strong> (nd,np)<em> [</em><em>real</em><em>,</em><em>in</em><em>]</em> :: positions</li>
+<li><strong>i</strong><em> [</em><em>integer</em><em>,</em><em>in</em><em>]</em> :: index particle I</li>
+<li><strong>j</strong><em> [</em><em>integer</em><em>,</em><em>in</em><em>]</em> :: distance vector</li>
+<li><strong>rij</strong> (nd)<em> [</em><em>real</em><em>,</em><em>out</em><em>]</em></li>
+<li><strong>d</strong><em> [</em><em>real</em><em>,</em><em>out</em><em>]</em> :: distance</li>
+<li><strong>d2</strong><em> [</em><em>real</em><em>,</em><em>out</em><em>]</em> :: trucated distance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Called from:</th><td class="field-body"><p class="first last"><a class="reference internal" href="md_all.html#f/_/compute" title="f/_/compute"><code class="xref f f-func docutils literal notranslate"><span class="pre">compute()</span></code></a>, <a class="reference internal" href="md_all.html#f/main" title="f/main"><code class="xref f f-prog docutils literal notranslate"><span class="pre">main</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xref_examples.html" class="btn btn-neutral float-right" title="Cross-Referencing Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UsingSphinxFortran.html" class="btn btn-neutral" title="Using Sphinx Fortran" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Oliver Stueker.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
